@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss";
+
+body {
+  color: #202020;
+}
+
+button {
+  cursor: pointer;
+}
+
+.bg-gradient {
+  background: #006a67;
+  background: linear-gradient(
+    360deg,
+    rgba(0, 106, 103, 1) 7%,
+    rgba(255, 244, 183, 1) 94%
+  );
+}
+
+@theme {
+  --font-jost: "Jost", sans-serif;
+
+  --default-font-family: "Jost";
+
+  --color-primary-black: #202020;
+  --color-primary-blue: #0f828c;
+}
