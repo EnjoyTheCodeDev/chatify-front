@@ -1,6 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { MessageService } from "../services/messageService";
-import type { MessageRead } from "../types/message";
 
 export const useMessages = (chatId: string) => {
   return useQuery({
@@ -14,27 +13,8 @@ export const useSendMessage = (chatId: string) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async ({
-      content,
-      files,
-    }: {
-      content?: string;
-      files?: File[];
-    }) => {
-      await queryClient.cancelQueries({ queryKey: ["messages", chatId] });
-
-      const previousMessages = queryClient.getQueryData<MessageRead[]>([
-        "messages",
-        chatId,
-      ]);
-
-      queryClient.setQueryData<MessageRead[]>(
-        ["messages", chatId],
-        (old: any) => [...old, { content, files }],
-      );
-
-      return previousMessages;
-    },
+    mutationFn: ({ content, files }: { content?: string; files?: File[] }) =>
+      MessageService.sendMessage(chatId, content, files),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["messages", chatId] });
     },

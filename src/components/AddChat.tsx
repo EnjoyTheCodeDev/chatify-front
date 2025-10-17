@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useUsers } from "../utils/hooks/useUserApi";
+import { useUsers, useMe } from "../utils/hooks/useUserApi";
 import { useUserChats } from "../utils/hooks/useChatApi";
 
 import AddChatIcon from "../icons/AddChatIcon";
@@ -11,6 +11,7 @@ import LoadingWrap from "./LoadingWrap";
 import UserItem from "./UserItem";
 
 const AddChat = () => {
+  const { data: me } = useMe();
   const { data: users, isLoading } = useUsers();
   const { data: userChats } = useUserChats();
   const [isOpen, setIsOpen] = React.useState(false);
@@ -29,8 +30,10 @@ const AddChat = () => {
   const usersList = React.useMemo(() => {
     if (!users) return [];
 
-    return users.filter((user) => !chatUserIds.has(user.id));
-  }, [users, chatUserIds]);
+    return users.filter(
+      (user) => !chatUserIds.has(user.id) && user.id !== me?.id,
+    );
+  }, [users, chatUserIds, me]);
 
   return (
     <div>
