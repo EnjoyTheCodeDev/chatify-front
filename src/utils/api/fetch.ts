@@ -1,6 +1,6 @@
 import { AuthService } from "../services/authService";
 
-const BASE_URL = "https://chatify-backend-q6a0.onrender.com";
+const BASE_URL = "https://chatify-backend-q6a0.onrender.com/api";
 
 export async function apiFetch<T>(
   url: string,

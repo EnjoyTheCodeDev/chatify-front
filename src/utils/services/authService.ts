@@ -4,7 +4,7 @@ import type {
   TokenResponse,
 } from "../types/auth";
 
-const API_URL = "https://chatify-backend-q6a0.onrender.com";
+const API_URL = "https://chatify-backend-q6a0.onrender.com/api";
 
 export class AuthService {
   static async signup(data: UserRegisterRequest): Promise<TokenResponse> {
