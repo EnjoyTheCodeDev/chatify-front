@@ -1,6 +1,6 @@
 import { AuthService } from "../services/authService";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const BASE_URL = "https://chatify-backend-q6a0.onrender.com";
 
 export async function apiFetch<T>(
   url: string,

@@ -4,7 +4,7 @@ import type {
   TokenResponse,
 } from "../types/auth";
 
-const API_URL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = "https://chatify-backend-q6a0.onrender.com";
 
 export class AuthService {
   static async signup(data: UserRegisterRequest): Promise<TokenResponse> {
