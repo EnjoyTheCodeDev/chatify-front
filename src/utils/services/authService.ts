@@ -4,7 +4,7 @@ import type {
   TokenResponse,
 } from "../types/auth";
 
-const API_URL = "http://localhost:8000/api";
+const API_URL = import.meta.env.API_BASE_URL;
 
 export class AuthService {
   static async signup(data: UserRegisterRequest): Promise<TokenResponse> {
