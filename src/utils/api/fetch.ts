@@ -1,6 +1,6 @@
 import { AuthService } from "../services/authService";
 
-const BASE_URL = "http://localhost:8000/api";
+const BASE_URL = import.meta.env.API_BASE_URL;
 
 export async function apiFetch<T>(
   url: string,
