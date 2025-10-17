@@ -22,6 +22,11 @@ export async function apiFetch<T>(
     headers,
   });
 
+  if (response.status === 401) {
+    AuthService.logout();
+    throw new Error("Unauthorized");
+  }
+
   if (!response.ok) {
     const text = await response.text();
     throw new Error(text || `HTTP error ${response.status}`);
